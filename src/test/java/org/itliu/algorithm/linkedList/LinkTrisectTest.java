@@ -1,6 +1,5 @@
 package org.itliu.algorithm.linkedList;
 
-import com.robust.tools.kit.base.type.Triple;
 import org.junit.Test;
 
 /**
@@ -21,9 +20,9 @@ public class LinkTrisectTest {
         listNode1.next = listNode2;
         listNode2.next = listNode3;
 
-        Triple triple = LinkTrisect.trisect(listNode1);
-        System.out.println(triple.getLeft());
-        System.out.println(triple.getMiddle());
-        System.out.println(triple.getRight());
+        ListNode[] triple = LinkTrisect.trisect(listNode1);
+        System.out.println(triple[0]);
+        System.out.println(triple[1]);
+        System.out.println(triple[2]);
     }
 }
