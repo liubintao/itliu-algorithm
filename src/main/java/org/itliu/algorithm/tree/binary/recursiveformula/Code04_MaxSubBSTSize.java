@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Code04_MaxSubBSTSize {
 
-    public static class Node {
+    private static class Node {
         public int value;
         public Node left;
         public Node right;
@@ -57,7 +57,7 @@ public class Code04_MaxSubBSTSize {
         return Math.max(maxSubBSTSize1(head.left), maxSubBSTSize1(head.right));
     }
 
-    public static class Info {
+    private static class Info {
         public boolean isAllBST;
         public int maxSubBSTSize;
         public int max;

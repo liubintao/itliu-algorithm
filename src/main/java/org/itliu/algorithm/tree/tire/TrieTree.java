@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class TrieTree {
 
-    public static class Node1 {
+    private static class Node1 {
         //有多少条路经过此节点
         public int pass;
         //有多少条路以此节点作为结尾
@@ -106,7 +106,7 @@ public class TrieTree {
         }
     }
 
-    public static class Node2 {
+    private static class Node2 {
         //有多少条路经过此节点
         public int pass;
         //有多少条路以此节点作为结尾

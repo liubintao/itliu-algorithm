@@ -15,7 +15,7 @@ package org.itliu.algorithm.tree.binary;
  * @version: 1.0
  */
 public class SuccessorNode {
-    public static class Node {
+    private static class Node {
         public int value;
         public Node left;
         public Node right;

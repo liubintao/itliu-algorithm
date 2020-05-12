@@ -20,7 +20,7 @@ import java.util.Map;
  * @version: 1.0
  */
 public class CopyListWithRandom {
-    public static class Node {
+    private static class Node {
         public int value;
         public Node next;
         public Node rand;

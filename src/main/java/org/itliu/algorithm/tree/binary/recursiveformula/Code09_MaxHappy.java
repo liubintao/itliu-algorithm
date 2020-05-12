@@ -62,7 +62,7 @@ public class Code09_MaxHappy {
         }
     }
 
-    public static class Info {
+    private static class Info {
         public int yes;//来的最大快乐值
         public int no;//不来的最大快乐值
 

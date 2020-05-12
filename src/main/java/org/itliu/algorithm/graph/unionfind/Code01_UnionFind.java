@@ -17,7 +17,7 @@ public class Code01_UnionFind {
      * 单个样本数据
      * @param <V> 样本数据类型
      */
-    public static class Node<V>{
+    private static class Node<V>{
         public V value;
 
         public Node(V value) {

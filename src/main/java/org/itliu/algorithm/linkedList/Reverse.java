@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Reverse {
 
-    public static class Node<T> {
+    private static class Node<T> {
         public T value;
         public Node next;
 

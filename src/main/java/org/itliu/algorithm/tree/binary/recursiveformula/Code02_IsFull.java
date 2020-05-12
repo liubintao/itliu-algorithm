@@ -10,7 +10,7 @@ package org.itliu.algorithm.tree.binary.recursiveformula;
  */
 public class Code02_IsFull {
 
-    public static class Node {
+    private static class Node {
         public int value;
         public Node left;
         public Node right;
@@ -68,7 +68,7 @@ public class Code02_IsFull {
         return (1 << all.height) - 1 == all.nodes;
     }
 
-    public static class Info {
+    private static class Info {
         public int height;
         public int nodes;
 

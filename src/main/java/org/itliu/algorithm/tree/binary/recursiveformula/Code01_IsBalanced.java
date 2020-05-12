@@ -11,7 +11,7 @@ package org.itliu.algorithm.tree.binary.recursiveformula;
  */
 public class Code01_IsBalanced {
 
-    public static class Node {
+    private static class Node {
         public int value;
         public Node left;
         public Node right;
@@ -42,7 +42,7 @@ public class Code01_IsBalanced {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
-    public static class Info {
+    private static class Info {
         public boolean isBalanced;
         public int height;
 

@@ -8,7 +8,7 @@ package org.itliu.algorithm.tree.binary;
  */
 public class PrintBinaryTree {
 
-    public static class Node {
+    private static class Node {
         public int value;
         public Node left;
         public Node right;

@@ -8,7 +8,7 @@ package org.itliu.algorithm.linkedList;
  */
 public class DeleteGivenValue {
 
-    public static class Node {
+    private static class Node {
         public int value;
         public Node next;
 

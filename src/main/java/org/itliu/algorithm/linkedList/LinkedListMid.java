@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class LinkedListMid {
 
-    public static class Node {
+    private static class Node {
         public int value;
         public Node next;
 

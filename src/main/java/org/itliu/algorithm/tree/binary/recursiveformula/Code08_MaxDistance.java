@@ -12,7 +12,7 @@ import java.util.HashSet;
  */
 public class Code08_MaxDistance {
 
-    public static class Node {
+    private static class Node {
         public int value;
         public Node left;
         public Node right;
@@ -98,7 +98,7 @@ public class Code08_MaxDistance {
         return distance1 + distance2 - 1;
     }
 
-    public static class Info {
+    private static class Info {
         public int maxDistance;
         public int height;
 
