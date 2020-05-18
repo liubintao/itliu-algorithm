@@ -26,7 +26,7 @@ public class Code04_Kruskal {
             this.sizeMap = new HashMap<>();
         }
 
-        public void makeSets(Collection<Node<?>> nodes) {
+        public void makeSets(Collection<Node> nodes) {
             parentMap.clear();
             sizeMap.clear();
 

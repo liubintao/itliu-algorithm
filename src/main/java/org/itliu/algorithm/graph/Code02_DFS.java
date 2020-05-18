@@ -26,7 +26,7 @@ public class Code02_DFS {
         System.out.println(node.value);
 
         while (!stack.isEmpty()) {
-            final Node<Integer> cur = stack.pop();
+            final Node cur = stack.pop();
             for (Node next : cur.nexts) {
                 if (!set.contains(next)) {
                     stack.push(cur);

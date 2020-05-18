@@ -31,7 +31,7 @@ public class Code03_TopologySort {
         // 拓扑排序的结果，依次加入result
         List<Node> result = new ArrayList<>();
         while (!zeroInQueue.isEmpty()) {
-            final Node<Integer> node = zeroInQueue.poll();
+            final Node node = zeroInQueue.poll();
             result.add(node);
 
             for (Node next : node.nexts) {
