@@ -13,6 +13,7 @@ package org.itliu.algorithm.recursion.forceAndDp;
  */
 public class Code07_Knapsack {
 
+    //暴力递归求解
     public static int getMaxValue(int[] weight, int[] values, int bag) {
         return process(weight, values, 0, 0, bag);
     }
@@ -46,6 +47,7 @@ public class Code07_Knapsack {
     }
 
 
+    //暴力递归求解优化
     public static int maxValue(int[] weight, int[] values, int bag) {
         return process2(weight, values, 0, bag);
     }
@@ -75,12 +77,47 @@ public class Code07_Knapsack {
         return Math.max(p1, p2);
     }
 
+    //暴力递归 -> 动态规划
+    public static int dpWay(int[] weight, int[] values, int bag) {
+        //两个可变参数，范围是weight.length rest
+        int N = weight.length;
+        //因为我们暴力递归的过程中用到了weight.length这个终止位置，所有我们多个一个位置N+1
+        //bag既不可能<0，也不可能>20，根据下面的主函数调用可知，要返回0,bag位置的值，所以bag的大小也+1
+        int[][] dp = new int[N + 1][bag + 1];
+
+        //改成动态规划后就是dp[N][..]=0，因为int数组默认值就是0，所以可以不设置
+        //因为只有index == w.length 时剩余价值为0，所以推出前面的值依赖后面的值
+
+        //因为dp[N]这一行已经填完了，都是0，所以从N-1开始往上
+        for (int index = N - 1; index >= 0; index--) {
+            for (int rest = 0; rest <= bag; rest++) { //从0开始已经规避了原来的rest < 0
+                int p1 = dp[index + 1][rest];
+                int p2 = -1;
+                //因为是自底向上，所以index+1 不会越界，但rest-weight[index]可能会越界
+                if (rest - weight[index] > 0) {
+                    p2 = values[index] + dp[index + 1][rest - weight[index]];
+                }
+                dp[index][rest] = Math.max(p1, p2);
+
+                //可以简写为
+                /*dp[index][rest] = dp[index + 1][rest];
+                if (rest >= weight[index]) {
+                    dp[index][rest] = Math.max(dp[index][rest],
+                            values[index] + dp[index + 1][rest - weight[index]]);
+                }*/
+            }
+        }
+
+        return dp[0][bag];
+    }
+
+
     public static void main(String[] args) {
-        int[] weights = { 3, 2, 4, 7 };
-        int[] values = { 5, 6, 3, 19 };
+        int[] weights = {3, 2, 4, 7};
+        int[] values = {5, 6, 3, 19};
         int bag = 11;
         System.out.println(getMaxValue(weights, values, bag));
         System.out.println(maxValue(weights, values, bag));
-//        System.out.println(dpWay(weights, values, bag));
+        System.out.println(dpWay(weights, values, bag));
     }
 }
