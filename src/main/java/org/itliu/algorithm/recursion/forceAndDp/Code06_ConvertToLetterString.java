@@ -49,10 +49,49 @@ public class Code06_ConvertToLetterString {
         return process(str, i + 1);
     }
 
+    public static int dpWays(String s) {
+        //base case
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        //暴力递归的主函数要谁，要0位置的数，返回dp[0]
+        char[] str = s.toCharArray();
+        int N = str.length;
+        //一共一个可变参数，设置一个一维数组，取值范围设置为N+1，因为有str.length的判断
+        int[] dp = new int[N+1];
+
+        //dp怎么生成
+        //1、设置初始值
+        //根据原过程中if (i == str.length) { return 1; } 将N位置设置为1
+        dp[N] = 1;
+        //2、将原过程函数copy过来改写
+        //原过程中返回的值依赖process(str, i + 1)和process(str, i + 2);所以推断返回值依赖后面的值，先设置后面的值，从后往前遍历
+        for (int i = N - 1; i >= 0; i--) {
+            //真正的改写过程，所有return的位置改成设置dp
+            if (str[i] == '0') {
+                dp[i] = 0;
+            }
+
+            if (str[i] == '1') {
+                dp[i] = dp[i + 1];
+                if (i + 1 < str.length) {
+                    dp[i] += dp[i + 2];
+                }
+            }
+
+            if (str[i] == '2') {
+                dp[i] = dp[i + 1];
+                if (i + 1 < str.length && str[i + 1] >= '0' && str[i + 1] <= '6') {
+                    dp[i] += dp[i + 2];// (i和i+1)作为单独的部分，后续有多少种方法
+                }
+            }
+        }
+        return dp[0];
+    }
 
     public static void main(String[] args) {
-        System.out.println(number("11111"));
-//        System.out.println(dpWays2("11111"));
+        System.out.println(number("111111"));
+        System.out.println(dpWays("111111"));
     }
 
 }
