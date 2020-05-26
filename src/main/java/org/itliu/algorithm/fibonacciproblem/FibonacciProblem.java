@@ -7,7 +7,7 @@ package org.itliu.algorithm.fibonacciproblem;
  */
 public class FibonacciProblem {
 
-    //暴力递归
+    //斐波那契数列暴力递归
     private static int f1(int n) {
         if (n < 1) {
             return 0;
@@ -19,7 +19,7 @@ public class FibonacciProblem {
         return f1(n - 1) + f1(n - 2);
     }
 
-    //线性求解
+    //斐波那契数列线性求解
     private static int f2(int n) {
         if (n < 1) {
             return 0;
@@ -36,6 +36,7 @@ public class FibonacciProblem {
         return f3;
     }
 
+    //斐波那契数列快速幂求解
     private static int f3(int n) {
         if (n < 1) {
             return 0;
@@ -87,16 +88,33 @@ public class FibonacciProblem {
         return res;
     }
 
+    /**
+     * 一个人可以一次往上迈1个台阶，也可以迈2个台阶
+     * 返回这个人迈上N级台阶的方法数
+     *
+     * @param n N级台阶
+     * @return 方法数
+     */
     public static int s1(int n) {
         if (n < 1) {
             return 0;
         }
+
+        /**
+         * 迈1阶台阶只有1种方法，迈2阶台阶有2种方法(1次迈1阶迈2次  1次迈2阶迈一次)
+         */
         if (n == 1 || n == 2) {
             return n;
         }
+        /**
+         * 只能从第n-1阶台阶迈上来或者从n-2阶台阶迈上来
+         */
         return s1(n - 1) + s1(n - 2);
     }
 
+    /**
+     * 迈台阶的线性复杂度求解 O(N)
+     */
     public static int s2(int n) {
         if (n < 1) {
             return 0;
@@ -115,6 +133,7 @@ public class FibonacciProblem {
         return res;
     }
 
+    //迈台阶的斐波那契数列快速幂求解
     public static int s3(int n) {
         if (n < 1) {
             return 0;
@@ -127,6 +146,18 @@ public class FibonacciProblem {
         return 2 * res[0][0] + res[1][0];
     }
 
+    /**
+     * 第一年农场有1只成熟的母牛A，往后的每年：
+     *
+     * 1）每一只成熟的母牛都会生一只母牛
+     * 2）每一只新出生的母牛都在出生的第三年成熟
+     * 3）每一只母牛永远不会死
+     * 返回N年后牛的数量
+     *
+     * @param n n年后
+     * @return 牛的数量
+     */
+    //暴力递归
     public static int c1(int n) {
         if (n < 1) {
             return 0;
@@ -137,6 +168,7 @@ public class FibonacciProblem {
         return c1(n - 1) + c1(n - 3);
     }
 
+    //线性求解
     public static int c2(int n) {
         if (n < 1) {
             return 0;
@@ -144,21 +176,21 @@ public class FibonacciProblem {
         if (n == 1 || n == 2 || n == 3) {
             return n;
         }
-        int res = 3;
-        int pre = 2;
-        int prepre = 1;
-        int tmp1 = 0;
+        int prepre = 1;//三年前1只
+        int pre = 2;//两年前又生了1只共2只
+        int res = 3;//前一年又生了一只共3只
         int tmp2 = 0;
+        //从第4年开始  每年数量=前一年数量+三年前数量
         for (int i = 4; i <= n; i++) {
-            tmp1 = res;
             tmp2 = pre;
-            res = res + prepre;
-            pre = tmp1;
-            prepre = tmp2;
+            pre = res; //三年前数量变成两年前数量
+            res = res + prepre; //返回的结果=前一年数量+三年前数量
+            prepre = tmp2; //三年前数量
         }
         return res;
     }
 
+    //快速幂方式求解
     public static int c3(int n) {
         if (n < 1) {
             return 0;
