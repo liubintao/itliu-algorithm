@@ -78,9 +78,10 @@ public class FibonacciProblem {
     //两个矩阵乘完之后的结果
     public static int[][] multiMatrix(int[][] m1, int[][] m2) {
         int[][] res = new int[m1.length][m2[0].length];
-        for (int i = 0; i < m1.length; i++) {
-            for (int j = 0; j < m2[0].length; j++) {
-                for (int k = 0; k < m2.length; k++) {
+        for (int i = 0; i < m1.length; i++) {//矩阵1有几行
+            for (int j = 0; j < m2[0].length; j++) {//矩阵2有几列
+                for (int k = 0; k < m2.length; k++) {//矩阵2有几行
+                    //矩阵1中每一行中每一列的值 * 矩阵2中每一行每一列的值
                     res[i][j] += m1[i][k] * m2[k][j];
                 }
             }
