@@ -55,7 +55,7 @@ public class Manacher {
 
                 //每次R往右扩了都要更新，以i为中心的回文串长度往右扩回文串的长度，每次右边界都会在最右的扩成功位置的再下一个位置
                 if (i + pArr[i] > R) {
-                    R = i + pArr[i]; //R = i + pArr[i] - 1;
+                    R = i + pArr[i]; //R = i + pArr[i] - 1; i往右扩几位
                     C = i;
                 }
                 max = Math.max(max, pArr[i]);
