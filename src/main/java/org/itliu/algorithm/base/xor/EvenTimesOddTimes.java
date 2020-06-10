@@ -48,7 +48,7 @@ public class EvenTimesOddTimes {
             // rightOne=  000000000010000
             //条件是==0 || !=0 都可以，都是只取奇数中的一种
             if ((rightOne & arr[i]) == 0) {
-                onlyOne &= arr[i];
+                onlyOne ^= arr[i];
             }
         }
         System.out.println(onlyOne + " " + (onlyOne ^ eor));
@@ -78,5 +78,24 @@ public class EvenTimesOddTimes {
             n ^= rightOne;
         }
         return count;
+    }
+
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 7;
+
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+
+        System.out.println(a);
+        System.out.println(b);
+
+        int[] arr1 = { 3, 3, 2, 3, 1, 1, 1, 3, 1, 1, 1 };
+        printOddTimesNum1(arr1);
+
+        int[] arr2 = { 4, 3, 4, 2, 2, 2, 4, 1, 1, 1, 3, 3, 1, 1, 1, 4, 2, 2 };
+        printOddTimesNum2(arr2);
+
     }
 }
